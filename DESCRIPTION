@@ -1,11 +1,13 @@
 Package: l1pm
 Type: Package
-Title: What the Package Does (Title Case)
+Title: The l1 Penalization Method. 
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Sang Jun Moon
+Maintainer: SangJun Moon <msj5589@gmail.com>
+Description: 
+  Fit a neural network model to estimate 
+  multiple conditional quantiles satisfying the non-crossing property 
+  motivated by  by linear non-crossing quantile regression.
+License: 
 Encoding: UTF-8
 LazyData: true
