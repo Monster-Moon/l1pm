@@ -1,13 +1,12 @@
 Package: l1pm
 Type: Package
-Title: The l1 Penalization Method. 
+Title: The l1 Penalization Method
 Version: 0.1.0
 Author: Sang Jun Moon
 Maintainer: SangJun Moon <msj5589@gmail.com>
 Description: 
-  Fit a neural network model to estimate 
-  multiple conditional quantiles satisfying the non-crossing property 
-  motivated by  by linear non-crossing quantile regression.
-License: 
+  Fit a neural network model to estimate multiple conditional quantiles satisfying the non-crossing property.
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.1
