@@ -5,7 +5,7 @@ if(!require(quadprog)) install.packages("quadprog")
 require(tensorflow)
 require(quadprog)
 
-if(tensorflow::tf_version() != '1.14') tensorflow::install_tensorflow(version = '1.14')
+# if(tensorflow::tf_version() != '1.14') tensorflow::install_tensorflow(version = '1.14')
 
 
 #### Projection method (PG)
