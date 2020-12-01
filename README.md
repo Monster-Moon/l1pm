@@ -31,7 +31,7 @@ reticulate::use_condaenv(condaenv = 'names')
 tensorflow::tf_config()
 ```
 
-### Execution
+### Execution example
 ```
 # tensorflow::use_python("C:\\ProgramData\\Anaconda3\\python.exe") ## with conda example
 require(tensorflow)
