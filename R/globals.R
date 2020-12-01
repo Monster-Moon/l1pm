@@ -1,1 +1,1 @@
-utils::globalVariables(c("tf", "shape", "dict"))
+utils::globalVariables(c("tf", "shape", "dict", "%>%", "solve.QP"))
