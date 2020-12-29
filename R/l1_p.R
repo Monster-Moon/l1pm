@@ -1,18 +1,19 @@
 
 #' l1_p
 #' @description Estimates non crossing quantile regression with a neural network.
-#' @param X train predictor data
-#' @param y train response data
-#' @param test_X test predictor data
-#' @param valid_X validation predictor data
-#' @param tau target quantiles
-#' @param hidden_dim1 the number of nodes in the first hidden layer
-#' @param hidden_dim2 the number of nodes in the second hidden layer
-#' @param learning_rate learning rate in the optimization process
-#' @param max_deep_iter the number of iterations
-#' @param lambda_obj the value of tuning parameter in the l1 penalization method
-#' @param penalty the value of tuning parameter for ridge penalty on weights
-#' @return y_predicted, y_test_predicted, y_valid_predited : predicted quantile based on train, test, and validation data, respectively
+#' @param X Train predictor data
+#' @param y Train response data
+#' @param test_X Test predictor data
+#' @param valid_X Validation predictor data
+#' @param tau Target quantiles
+#' @param hidden_dim1 The number of nodes in the first hidden layer
+#' @param hidden_dim2 The number of nodes in the second hidden layer
+#' @param learning_rate Learning rate in the optimization process
+#' @param max_deep_iter The number of iterations
+#' @param lambda_obj The value of tuning parameter in the l1 penalization method
+#' @param penalty The value of tuning parameter for ridge penalty on weights
+#' @import tensorflow
+#' @return y_predicted, y_test_predicted, y_valid_predited
 
 
 l1_p = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_rate, max_deep_iter, lambda_obj, penalty)
@@ -46,7 +47,7 @@ l1_p = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_r
   beta_mat = tf$transpose(tf$cumsum(tf$transpose(delta_mat)))
 
   delta_vec = delta_mat[2:p, 2:r]
-  delta_0_vec = delta_mat[1, 2:r ,drop = F]
+  delta_0_vec = delta_mat[1, 2:r ,drop = FALSE]
   delta_minus_vec = tf$maximum(0, -delta_vec)
   delta_minus_vec_sum = tf$reduce_sum(delta_minus_vec, 0L)
   delta_0_vec_clipped = tf$clip_by_value(delta_0_vec,

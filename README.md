@@ -5,37 +5,34 @@ Non crossing quantile regression using neural network
 - Python >= 3.6
 - Tensorflow >= 1.14 & < 2
 
-### Install tutorial
-```
-if(!require(Rcpp)) install.packages('Rcpp'); require(Rcpp)
-if(!require(devtools)) install.packages('devtools'); require(devtools)
-if(!require(tensorflow)) 
-{
-	devtools::install_github('rstudio/tensorflow')
-	install_tensorflow(version = '1.14')
-}	
-```
-
-### Install tutorial with conda
+### Install tensorflow
 ```
 if(!require(Rcpp)) install.packages('Rcpp'); require(Rcpp)
 if(!require(devtools)) install.packages('devtools'); require(devtools)
 if(!require(reticulate)) install.packages('reticulate'); require(reticulate)
-if(!require(tensorflow)) 
-{
-	devtools::install_github('rstudio/tensorflow')
-	install_tensorflow(version = '1.14')
-}
+
+reticulate::install_miniconda()
 reticulate::conda_list()
-reticulate::use_condaenv(condaenv = 'names')
-tensorflow::tf_config()
+
+reticulate::use_condaenv(condaenv = 'r-reticulate')
+if(!require(tensorflow)) install.packages('tensorflow'); require(tensorflow)
+tensorflow::install_tensorflow()
 ```
 
-### Execution example
+### Install l1pm
 ```
-# tensorflow::use_python("C:\\ProgramData\\Anaconda3\\python.exe") ## with conda example
-require(tensorflow)
+reticulate::conda_list()
+reticulate::use_condaenv(condaenv = 'r-reticulate')
+tensorflow::tf_config()
 devtools::install_github('Monster-Moon/l1pm')
+require(l1pm)
+```
+
+
+### Example
+```
+reticulate::use_condaenv(condaenv = 'r-reticulate')
+require(tensorflow)
 require(l1pm)
 
 ### train data
