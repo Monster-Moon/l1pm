@@ -19,30 +19,30 @@ l1_p(
 )
 }
 \arguments{
-\item{X}{Train predictor data}
+\item{X}{train predictor data}
 
-\item{y}{Train response data}
+\item{y}{train response data}
 
-\item{test_X}{Test predictor data}
+\item{test_X}{test predictor data}
 
-\item{valid_X}{Validation predictor data}
+\item{valid_X}{validation predictor data}
 
-\item{tau}{Target quantiles}
+\item{tau}{target quantiles}
 
-\item{hidden_dim1}{The number of nodes in the first hidden layer}
+\item{hidden_dim1}{the number of nodes in the first hidden layer}
 
-\item{hidden_dim2}{The number of nodes in the second hidden layer}
+\item{hidden_dim2}{the number of nodes in the second hidden layer}
 
-\item{learning_rate}{Learning rate in the optimization process}
+\item{learning_rate}{learning rate in the optimization process}
 
-\item{max_deep_iter}{The number of iterations}
+\item{max_deep_iter}{the number of iterations}
 
-\item{lambda_obj}{The value of tuning parameter in the l1 penalization method}
+\item{lambda_obj}{the value of tuning parameter in the l1 penalization method}
 
-\item{penalty}{The value of tuning parameter for ridge penalty on weights}
+\item{penalty}{the value of tuning parameter for ridge penalty on weights}
 }
 \value{
-y_predicted, y_test_predicted, y_valid_predited
+y_predicted, y_test_predicted, y_valid_predited : predicted quantile based on train, test, and validation data, respectively
 }
 \description{
 Estimates non crossing quantile regression with a neural network.

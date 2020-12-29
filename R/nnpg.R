@@ -1,18 +1,16 @@
 
 #' nnqp
 #' @description Estimates non crossing quantile regression with a neural network using projected gradient method
-#' @param X Train predictor data
-#' @param y Train response data
-#' @param test_X Test predictor data
-#' @param valid_X Validation predictor data
-#' @param tau Target quantiles
-#' @param hidden_dim1 The number of nodes in the first hidden layer
-#' @param hidden_dim2 The number of nodes in the second hidden layer
-#' @param learning_rate Learning rate in the optimization process
-#' @param max_deep_iter The number of iterations
-#' @param penalty The value of tuning parameter for ridge penalty on weights
-#' @import tensorflow
-#' @import quadprog solve.QP
+#' @param X train predictor data
+#' @param y train response data
+#' @param test_X test predictor data
+#' @param valid_X validation predictor data
+#' @param tau target quantiles
+#' @param hidden_dim1 the number of nodes in the first hidden layer
+#' @param hidden_dim2 the number of nodes in the second hidden layer
+#' @param learning_rate learning rate in the optimization process
+#' @param max_deep_iter the number of iterations
+#' @param penalty the value of tuning parameter for ridge penalty on weights
 #' @return y_predicted, y_test_predicted, y_valid_predited
 
 nnqp = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_rate, max_deep_iter, penalty = 0.05)
@@ -46,7 +44,7 @@ nnqp = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_r
   beta_mat = tf$transpose(tf$cumsum(tf$transpose(delta_mat)))
 
   delta_vec = delta_mat[2:p, 2:ncol(delta_mat)]
-  delta_0_vec = delta_mat[1, 2:ncol(delta_mat) ,drop = FALSE]
+  delta_0_vec = delta_mat[1, 2:ncol(delta_mat) ,drop = F]
   delta_minus_vec = tf$maximum(0, -delta_vec)
   delta_minus_vec_sum = tf$reduce_sum(delta_minus_vec, 0L)
   delta_constraint = delta_0_vec - delta_minus_vec_sum
@@ -96,6 +94,18 @@ nnqp = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_r
 
       sess$run(delta_0_mat$assign(qp_delta_mat[1, , drop = F]))
       sess$run(delta_coef_mat$assign(qp_delta_mat[-1,]))
+    }
+
+    if(step %% 1000 == 0)
+    {
+      loss_val = sess$run(quantile_loss,
+                          feed_dict = dict(input_x = X,
+                                           output_y = y,
+                                           tau_tf = tau_mat))
+
+      const_val = sess$run(delta_constraint)
+      cat(step, "step's loss :", loss_val , "\n")
+      cat(step, "step's constraint :", const_val, "\n")
     }
   }
   y_predict = sess$run(predicted_y, feed_dict = dict(input_x = X))
