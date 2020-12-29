@@ -18,7 +18,7 @@ Authors@R:
              family = "Kim",
              role = "aut"))
 Description: Fit a neural network model to estimate multiple conditional quantiles satisfying the non-crossing property.
-Depends: R (>= 3.5.0), tensorflow (<= 1.14), quadprog (>= 1.5)
+Depends: R (>= 3.5.0), tensorflow, quadprog (>= 1.5)
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
