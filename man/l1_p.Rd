@@ -15,7 +15,7 @@ l1_p(
   learning_rate,
   max_deep_iter,
   lambda_obj,
-  penalty
+  penalty = 0
 )
 }
 \arguments{
