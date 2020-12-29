@@ -20,12 +20,8 @@ Authors@R:
 Description: Fit a neural network model to estimate multiple conditional quantiles satisfying the non-crossing property.
 Depends: R (>= 3.5.0), tensorflow, quadprog (>= 1.5)
 Author: SangJun Moon, Jonejune Jeon, Jason SangHun Lee, Yongdai Kim
-Author@R: person('Sangjun', 'Moon', email = 'msj5589@gmail.com', role = c('aut', 'cre'))
 Maintainer: SangJun Moon <msj5589@gmail.com>
-Description: 
-  Fit a neural network model to estimate multiple conditional quantiles satisfying the non-crossing property.
 License: GPL-2
-Imports: tensorflow (<= 1.14), quadprog
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1

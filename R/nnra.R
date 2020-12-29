@@ -58,23 +58,23 @@ nnra = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_r
              feed_dict = dict(input_x = X,
                               output_y = y,
                               tau_tf = tau_mat))
-    if(step %% 1000 == 0)
-    {
-      loss_val = sess$run(quantile_loss,
-                          feed_dict = dict(input_x = X,
-                                           output_y = y,
-                                           tau_tf = tau_mat))
-      cat(step, "step's loss :", loss_val , "\n")
-    }
+    # if(step %% 1000 == 0)
+    # {
+    #   loss_val = sess$run(quantile_loss,
+    #                       feed_dict = dict(input_x = X,
+    #                                        output_y = y,
+    #                                        tau_tf = tau_mat))
+    #   cat(step, "step's loss :", loss_val , "\n")
+    # }
   }
 
   y_predict = sess$run(predicted_y, feed_dict = dict(input_x = X))
   y_test_predict = sess$run(predicted_y, feed_dict = dict(input_x = test_X))
   y_valid_predict = sess$run(predicted_y, feed_dict = dict(input_x = valid_X))
 
-  y_predict = apply(y_predict, 1, sort) %>% t()
-  y_test_predict = apply(y_test_predict, 1, sort) %>% t()
-  y_valid_predict = apply(y_valid_predict, 1, sort) %>% t()
+  y_predict = t(apply(y_predict, 1, sort))
+  y_test_predict = t(apply(y_test_predict, 1, sort))
+  y_valid_predict = t(apply(y_valid_predict, 1, sort))
 
   sess$close()
   barrier_result = list(y_predict = y_predict, y_valid_predict = y_valid_predict, y_test_predict = y_test_predict)
