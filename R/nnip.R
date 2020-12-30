@@ -42,7 +42,7 @@ nnip = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_r
   
   beta_mat = tf$transpose(tf$cumsum(tf$transpose(delta_mat)))
   delta_coef_mat = delta_mat[2:nrow(delta_mat), 2:ncol(delta_mat)]
-  delta_0_vec = delta_mat[1, 2:ncol(delta_mat), drop = F]
+  delta_0_vec = delta_mat[1, 2:ncol(delta_mat), drop = FALSE]
   
   delta_minus_mat_constraint = delta_minus_mat[2:nrow(delta_mat), 2:ncol(delta_mat)]
   delta_minus_mat_constraint_sum = tf$reduce_sum(delta_minus_mat_constraint, 0L)

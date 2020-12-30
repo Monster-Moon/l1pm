@@ -44,7 +44,7 @@ nnqp = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_r
   beta_mat = tf$transpose(tf$cumsum(tf$transpose(delta_mat)))
 
   delta_vec = delta_mat[2:p, 2:ncol(delta_mat)]
-  delta_0_vec = delta_mat[1, 2:ncol(delta_mat) ,drop = F]
+  delta_0_vec = delta_mat[1, 2:ncol(delta_mat), drop = FALSE]
   delta_minus_vec = tf$maximum(0, -delta_vec)
   delta_minus_vec_sum = tf$reduce_sum(delta_minus_vec, 0L)
   delta_constraint = delta_0_vec - delta_minus_vec_sum
@@ -92,7 +92,7 @@ nnqp = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_r
       qp_delta_vec = qp_delta_plus_vec - qp_delta_minus_vec
       qp_delta_mat = matrix(qp_delta_vec, ncol = r)
 
-      sess$run(delta_0_mat$assign(qp_delta_mat[1, , drop = F]))
+      sess$run(delta_0_mat$assign(qp_delta_mat[1, , drop = FALSE]))
       sess$run(delta_coef_mat$assign(qp_delta_mat[-1,]))
     }
 

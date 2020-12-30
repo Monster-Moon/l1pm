@@ -1,7 +1,7 @@
 Package: l1pm
 Type: Package
 Title: The l1 Penalization Method
-Version: 0.1.0
+Version: 0.1.1
 Date: 2020-12-29
 Authors@R: 
     c(person(given = "Sangjun",
@@ -18,8 +18,8 @@ Authors@R:
              family = "Kim",
              role = "aut"))
 Description: Fit a neural network model to estimate multiple conditional quantiles satisfying the non-crossing property.
-Depends: R (>= 3.5.0), quadprog (>= 1.5)
-Imports: tensorflow
+Depends: R (>= 3.5.0), Tensorflow (<= 1.14)
+Imports: tensorflow, quadprog (>= 1.5)
 Author: SangJun Moon, Jonejune Jeon, Jason SangHun Lee, Yongdai Kim
 Maintainer: SangJun Moon <msj5589@gmail.com>
 License: GPL-2

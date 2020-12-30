@@ -45,7 +45,7 @@ l1_p = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_r
   beta_mat = tf$transpose(tf$cumsum(tf$transpose(delta_mat)))
 
   delta_vec = delta_mat[2:p, 2:r]
-  delta_0_vec = delta_mat[1, 2:r ,drop = F]
+  delta_0_vec = delta_mat[1, 2:r ,drop = FALSE]
   delta_minus_vec = tf$maximum(0, -delta_vec)
   delta_minus_vec_sum = tf$reduce_sum(delta_minus_vec, 0L)
   delta_0_vec_clipped = tf$clip_by_value(delta_0_vec,
@@ -57,7 +57,7 @@ l1_p = function(X, y, test_X, valid_X, tau, hidden_dim1, hidden_dim2, learning_r
   delta_clipped = tf$clip_by_value(delta_constraint, clip_value_min = 10e-20, clip_value_max = Inf)
 
   predicted_y_modified = tf$matmul(feature_vec, beta_mat[2:p, ]) +
-    tf$cumsum(tf$concat(list(beta_mat[1, 1, drop = F], delta_0_vec_clipped), axis = 1L), axis = 1L)
+    tf$cumsum(tf$concat(list(beta_mat[1, 1, drop = FALSE], delta_0_vec_clipped), axis = 1L), axis = 1L)
   predicted_y = tf$matmul(feature_vec, beta_mat[2:p, ]) + beta_mat[1, ]
   predicted_y_tiled = tf$reshape(tf$transpose(predicted_y), shape(n * r, 1))
 
