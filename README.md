@@ -1,6 +1,7 @@
 # l1-penalizing method
 - Non-crossing quantile regression using neural network <a href='https://www.tandfonline.com/doi/full/10.1080/10618600.2021.1909601'>[link]</a>
 - The algorithm provides non-crossing quantiles estimates of response variable for given explanatory data.
+- Additionally, projected gradient descent method and interior-point method for multiple quantiles are also included.
 
 ### Required
 - Python >= 3.6
